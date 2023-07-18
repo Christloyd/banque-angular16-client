@@ -6,13 +6,13 @@ import { ListeCompte } from '../models/liste-compte';
 
 const baseUrl = 'http://localhost:8080/api/service-banque'
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class BanqueService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   connect(data: Login): Observable<any> {
     return this.http.post(`${baseUrl}/authentifier`, data);

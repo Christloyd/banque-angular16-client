@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Login } from '../models/login';
 import { BanqueService } from '../services/banque.service';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
     unMdp: ''
   };
 
-  constructor(private banqueService : BanqueService) {}
+  constructor(private banqueService : BanqueService, private sharedService : SharedService ) {}
 
   getlogin(): void {
     const data = {
@@ -24,10 +25,13 @@ export class LoginComponent {
 
     this.banqueService.connect(data).subscribe({
       next: (res) => {
+        this.sharedService.response = res; // Stock la réponse res dans le service partagé
         console.log(res);
+        this.sharedService.refreshList(); // Appelle la fonction refreshList() du service partagé
       },
       error: (e) => console.error(e)
     });
-
+    
   }
+
 }
