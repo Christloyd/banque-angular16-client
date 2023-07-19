@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
+
+ajouter : 
+
+npm install //node modules et package-lock.json
+ng add @angular/material // pour angular material
+npm install @angular/localize // pour l'heure en francais
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
