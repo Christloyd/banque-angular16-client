@@ -19,9 +19,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldControl } from '@angular/material/form-field';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { VirementComponent } from './pages/virement/virement.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     LoginComponent,
     ListeCompteComponent,
     DetailCompteComponent,
+    VirementComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,10 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatInputModule,
     MatIconModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

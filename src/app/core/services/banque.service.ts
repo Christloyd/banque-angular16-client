@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Login } from '../models/login';
 import { ListeCompte } from '../models/liste-compte';
+import { Virement } from '../models/virement';
 
 const baseUrl = 'http://localhost:8080/api/service-banque'
 
@@ -24,6 +25,10 @@ export class BanqueService {
 
   findByLibelle(param1: number, libelle : any) : Observable<ListeCompte[]>{
     return this.http.post<ListeCompte[]>(`${baseUrl}/selectCompteEtLibelle?unUtilisateurId=${param1}&unLibelle=${libelle}`, null);
+  }
+
+  getVirement(data : Virement): Observable<any> {
+    return this.http.post(`${baseUrl}/virement` , data);
   }
 
 }

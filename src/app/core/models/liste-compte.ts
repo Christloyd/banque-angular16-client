@@ -4,5 +4,4 @@ export class ListeCompte {
     solde! : number;
     decouvert? : number;
     taux? : number;
-
 }

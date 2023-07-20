@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { ListeCompte } from 'src/app/core/models/liste-compte';
+import { Virement } from 'src/app/core/models/virement';
 import { BanqueService } from 'src/app/core/services/banque.service';
 import { SharedService } from 'src/app/core/services/shared.service';
-
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-liste-compte',
-  templateUrl: './liste-compte.component.html',
-  styleUrls: ['./liste-compte.component.css']
+  selector: 'app-virement',
+  templateUrl: './virement.component.html',
+  styleUrls: ['./virement.component.css']
 })
-export class ListeCompteComponent {
-
+export class VirementComponent {
+  selectedCompteControl = new FormControl();
   listeCompte?: ListeCompte[];
   currentCompte : ListeCompte = {
     libelle: '',
@@ -22,9 +22,13 @@ export class ListeCompteComponent {
 
   currentIndex = -1;
   libelle = '';
-  id : any ;
 
-  constructor(private banqueService: BanqueService, private sharedService : SharedService,  private router: Router) { }
+  compteSource! : number;
+  compteDest! : number;
+  montantVirement! : number ;
+  virement : Virement[] = [];
+
+  constructor (private banqueService : BanqueService, private sharedService : SharedService) {}
 
   ngOnInit(): void {
     this.sharedService.refreshList$.subscribe(() => {
@@ -58,26 +62,24 @@ export class ListeCompteComponent {
     this.currentIndex = index;
   }
 
-  searchLabelle(): void {
-    this.currentCompte = {
-      libelle: '',
-      solde: 0,
-      decouvert: 0,
-      taux : 0
-    };
-    this.currentIndex = -1;
-  
-    this.banqueService.findByLibelle(this.sharedService.response, this.libelle).subscribe({
-      next: (data) => {
-        this.listeCompte = data;
-        console.log(data);
-        this.id = this.sharedService.response
+
+
+  getLastOperation(): void {
+
+    const data = {
+      unUtilisateurId: this.sharedService.response,
+      unCompteIdSrc: this.compteSource,
+      unCompteIdDst: this.compteDest,
+      unMontant: this.montantVirement,
+    }
+
+    this.banqueService.getVirement(data).subscribe({
+      next : (res) => {
+        console.log(res);
       },
       error: (e) => console.error(e)
-    });
+    })
   }
 
-  goVirement(): void {
-    this.router.navigate([`virement/${this.id}`]);
-  }
+
 }
