@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from 'src/app/core/models/login';
 import { BanqueService } from 'src/app/core/services/banque.service';
 import { SharedService } from 'src/app/core/services/shared.service';
@@ -17,7 +17,19 @@ export class LoginComponent {
     unMdp: ''
   };
 
-  constructor(private banqueService : BanqueService, private sharedService : SharedService, private router: Router) {}
+
+
+  constructor(private banqueService : BanqueService, private sharedService : SharedService, private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      console.log(id); // Vérifiez si vous obtenez la valeur de `id` correctement
+    });
+
+
+  }
+
   public id : any; 
   getlogin(): void {
     const data = {
@@ -31,11 +43,14 @@ export class LoginComponent {
         console.log(res);
         this.id = res ;
         this.sharedService.refreshList(); // Appelle la fonction refreshList() du service partagé
+        this.banqueService.id = res;
+
+        sessionStorage.setItem('id', this.id );
       },
       error: (e) => console.error(e)
     });
     
-    this.router.navigate([`liste-compte/${this.id}`]);
+    this.router.navigate([`liste-compte/${sessionStorage.getItem('id')}`]);
    
   }
 

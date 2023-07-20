@@ -12,6 +12,8 @@ const baseUrl = 'http://localhost:8080/api/service-banque'
 })
 export class BanqueService {
 
+  id? : any;
+
   constructor(private http: HttpClient) {
   }
 
@@ -29,6 +31,22 @@ export class BanqueService {
 
   getVirement(data : Virement): Observable<any> {
     return this.http.post(`${baseUrl}/virement` , data);
+  }
+
+  dataSave(){
+    sessionStorage.setItem('id', this.id );
+  }
+
+  get(){
+    return sessionStorage.getItem('id');
+  }
+
+  dataRemove(){
+    sessionStorage.removeItem("id");
+  }
+
+  deleteAll(){
+    sessionStorage.clear();
   }
 
 }

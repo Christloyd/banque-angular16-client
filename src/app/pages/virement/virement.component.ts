@@ -67,7 +67,7 @@ export class VirementComponent {
   getLastOperation(): void {
 
     const data = {
-      unUtilisateurId: this.sharedService.response,
+      unUtilisateurId: sessionStorage.getItem('id'),
       unCompteIdSrc: this.compteSource,
       unCompteIdDst: this.compteDest,
       unMontant: this.montantVirement,

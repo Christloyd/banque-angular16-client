@@ -24,6 +24,8 @@ export class ListeCompteComponent {
   libelle = '';
   id : any ;
 
+  idUrl : any;
+
   constructor(private banqueService: BanqueService, private sharedService : SharedService,  private router: Router) { }
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class ListeCompteComponent {
       this.lesComptes(); // Appelle la fonction lesComptes() lorsque l'événement connect de login.component.ts grace à la fonction refreshList() de shared.service
     });
   }
+
 
   lesComptes(): void {
     this.banqueService.getComptes(this.sharedService.response).subscribe({
@@ -41,6 +44,8 @@ export class ListeCompteComponent {
     error: (e) => console.error(e)
     });
   }
+
+
 
   refreshList() : void {
     this.lesComptes();
@@ -78,6 +83,6 @@ export class ListeCompteComponent {
   }
 
   goVirement(): void {
-    this.router.navigate([`virement/${this.id}`]);
+    this.router.navigate([`virement/${sessionStorage.getItem('id')}`]);
   }
 }
