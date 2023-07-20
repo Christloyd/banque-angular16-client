@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ListeCompte } from '../models/liste-compte';
-import { BanqueService } from '../services/banque.service';
-import { SharedService } from '../services/shared.service';
+import { ListeCompte } from 'src/app/core/models/liste-compte';
+import { BanqueService } from 'src/app/core/services/banque.service';
+import { SharedService } from 'src/app/core/services/shared.service';
+
 
 @Component({
   selector: 'app-liste-compte',

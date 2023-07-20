@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 style="text-align: center">Connexion</h1>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      id="unLogin"
+      [(ngModel)]="login.unLogin"
+      name="unLogin"
+      required
+      class="example-left-align"
+      placeholder="Identifant"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      id="unMdp"
+      [(ngModel)]="login.unMdp"
+      name="unMdp"
+      required
+      class="example-left-align"
+      placeholder="Mot de passe"
+    />
+  </mat-form-field>
+  <button (click)="getlogin()" mat-raised-button color="primary">
+    Se connecter
+  </button>
+</div>
