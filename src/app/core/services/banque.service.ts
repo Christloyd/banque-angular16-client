@@ -33,6 +33,14 @@ export class BanqueService {
     return this.http.post(`${baseUrl}/virement` , data);
   }
 
+  getOperationByIdCompte(unUtilisateurId : number, unCompteId : number):Observable<any>{
+    const data = { 
+      unUtilisateurId: unUtilisateurId, 
+      unCompteId: unCompteId 
+    }; 
+    return this.http.post(`${baseUrl}/virement` , data);
+  }
+
   dataSave(){
     sessionStorage.setItem('id', this.id );
   }

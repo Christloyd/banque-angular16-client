@@ -7,7 +7,7 @@ import { VirementComponent } from './pages/virement/virement.component';
 
 const routes: Routes = [
   { path : 'virement/:id', component: VirementComponent},
-  { path: 'detail-compte', component: DetailCompteComponent},
+  { path: 'detail-compte/:id', component: DetailCompteComponent},
   { path : 'liste-compte/:id', component: ListeCompteComponent},
   { path : '', component: LoginComponent}
 

@@ -27,14 +27,19 @@
     <div class="col-md-6">
       <h4>Liste Bancaire</h4>
       <ul class="list-group">
+        
+        
+
         <li
           class="list-group-item"
           *ngFor="let compte of listeCompte; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveCompte(compte, i)"
+          (click)="goOperation(compte.id)"
         >
           {{ compte.libelle }}
         </li>
+
+
+
       </ul>
   
 

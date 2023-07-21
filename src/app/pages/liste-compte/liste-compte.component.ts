@@ -20,6 +20,7 @@ export class ListeCompteComponent {
     taux : 0
   };
 
+  urlIdCompte = -1;
   currentIndex = -1;
   libelle = '';
   id : any ;
@@ -29,14 +30,19 @@ export class ListeCompteComponent {
   constructor(private banqueService: BanqueService, private sharedService : SharedService,  private router: Router) { }
 
   ngOnInit(): void {
-    this.sharedService.refreshList$.subscribe(() => {
-      this.lesComptes(); // Appelle la fonction lesComptes() lorsque l'événement connect de login.component.ts grace à la fonction refreshList() de shared.service
-    });
+      this.lesComptes();
   }
 
 
   lesComptes(): void {
-    this.banqueService.getComptes(this.sharedService.response).subscribe({
+    let idString = sessionStorage.getItem('id');
+    let idNumber: number = -1; // Initialisation avec une valeur par défaut
+
+    if (idString !== null) {
+      idNumber = parseInt(idString);
+    }
+
+    this.banqueService.getComptes(idNumber).subscribe({
       next: (data) => {
         this.listeCompte = data;
         console.log(data);
@@ -71,8 +77,18 @@ export class ListeCompteComponent {
       taux : 0
     };
     this.currentIndex = -1;
+
+
+    let idString = sessionStorage.getItem('id');
+    let idNumber: number = -1; // Initialisation avec une valeur par défaut
+
+    if (idString !== null) {
+      idNumber = parseInt(idString);
+    }
   
-    this.banqueService.findByLibelle(this.sharedService.response, this.libelle).subscribe({
+    this.banqueService.findByLibelle(idNumber, this.libelle).subscribe({
+
+      
       next: (data) => {
         this.listeCompte = data;
         console.log(data);
@@ -84,5 +100,9 @@ export class ListeCompteComponent {
 
   goVirement(): void {
     this.router.navigate([`virement/${sessionStorage.getItem('id')}`]);
+  }
+
+  goOperation(param1 : any): void {
+    this.router.navigate([`detail-compte/${param1}`]);
   }
 }
