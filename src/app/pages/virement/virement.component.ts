@@ -73,16 +73,13 @@ export class VirementComponent {
 
 
   getLastOperation(): void {
-
     let idString = sessionStorage.getItem('id');
     let idNumber: number = -1; // Initialisation avec une valeur par défaut
-
     if (idString !== null) {
       idNumber = parseInt(idString);
     }
 
     const data = {
-
       unUtilisateurId: idNumber,
       unCompteIdSrc: this.compteSource,
       unCompteIdDst: this.compteDest,
@@ -96,6 +93,4 @@ export class VirementComponent {
       error: (e) => console.error(e)
     })
   }
-
-
 }

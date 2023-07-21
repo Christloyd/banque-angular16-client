@@ -17,8 +17,6 @@ export class LoginComponent {
     unMdp: ''
   };
 
-
-
   constructor(private banqueService : BanqueService, private sharedService : SharedService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -26,8 +24,6 @@ export class LoginComponent {
       const id = params.get('id');
       console.log(id); // Vérifiez si vous obtenez la valeur de `id` correctement
     });
-
-
   }
 
   public id : any; 
@@ -49,9 +45,6 @@ export class LoginComponent {
       },
       error: (e) => console.error(e)
     });
-    
     this.router.navigate([`liste-compte/${sessionStorage.getItem('id')}`]);
-   
   }
-
 }

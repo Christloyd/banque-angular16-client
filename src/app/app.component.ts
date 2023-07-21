@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedService } from './core/services/shared.service';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,6 @@ import { SharedService } from './core/services/shared.service';
 })
 export class AppComponent {
   title = 'banque-angular16-client';
+  faCoffee = faCoffee;
 
 }

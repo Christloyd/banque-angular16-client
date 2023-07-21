@@ -1,33 +1,134 @@
-<div class="container">
-    <h1 style="text-align: center">Virement</h1>
+<br />
+<br />
+<br />
 
-
-    <mat-form-field>
-      <mat-label>Selectionner le compte</mat-label>
-      <mat-select [(ngModel)]="compteSource">
-        <mat-option *ngFor="let compte of listeCompte" [value]="compte.id">{{ compte.libelle }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Selectionner le compte</mat-label>
-      <mat-select [(ngModel)]="compteDest">
-        <mat-option *ngFor="let compte of listeCompte" [value]="compte.id">{{ compte.libelle }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-   
-      <mat-form-field>
-        <input
-          matInput
-          id="montant"
-          [(ngModel)]="montantVirement"
-          name="unMontant"
-          required
-          class="example-left-align"
-          placeholder="le montant"
-        />
-      </mat-form-field>
-    <button (click)="getLastOperation()" mat-raised-button color="primary">
-      valider
-    </button>
+<div class="container text-center">
+  <div class="d-flex justify-content-center pt-3">
+    
   </div>
+  <div class="row mt-3 g-0 mb-5 height-125">
+    <div class="col-md-12">
+      <div class="bg-white p-4 h-100 shadow">
+        <div class="p-3 d-flex justify-content-center flex-column">
+          <span class="registerTop text-center"
+            ><h1 style="text-align: center">Virement</h1></span
+          >
+          <div
+            class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4"
+          >
+            <div class="form-outline flex-fill mb-0">
+              <div class="dropdown">
+                <button
+                  class="btn btn-outline-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sélectionner le compte à débiter
+                </button>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdown"
+                  [(ngModel)]="compteSource"
+                >
+                  <li *ngFor="let compte of listeCompte" [value]="compte.id">
+                    {{ compte.libelle }}>
+                  </li>
+                </ul>
+              </div>
+              <div></div>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4"
+          >
+            <div class="form-outline flex-fill mb-0">
+              <div class="dropdown">
+                <button
+                  class="btn btn-outline-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sélectionner le compte à créditer
+                </button>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdown"
+                  [(ngModel)]="compteDest"
+                >
+                  <li *ngFor="let compte of listeCompte" [value]="compte.id">
+                    {{ compte.libelle }}>
+                  </li>
+                </ul>
+              </div>
+              <div></div>
+            </div>
+          </div>
+
+          <div
+            class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4"
+            style="width: 280px"
+          >
+            <div class="form-outline flex-fill mb-0">
+              <input
+                id="montant"
+                name="unMontant"
+                class="form-control mt-2"
+                placeholder="Indiquez le montant"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="" />
+
+        <div class="checkbox mb-3">
+          <label> </label>
+        </div>
+
+        <div
+          class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4"
+        >
+          <button class="btn btn-outline-primary btn-block" type="submit">
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <!--<div class="container">
+  <h1 style="text-align: center">Virement</h1>
+
+
+  <mat-form-field>
+    <mat-label>Selectionner le compte</mat-label>
+    <mat-select [(ngModel)]="compteSource">
+      <mat-option *ngFor="let compte of listeCompte" [value]="compte.id">{{ compte.libelle }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Selectionner le compte</mat-label>
+    <mat-select [(ngModel)]="compteDest">
+      <mat-option *ngFor="let compte of listeCompte" [value]="compte.id">{{ compte.libelle }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+ 
+    <mat-form-field>
+      <input
+        matInput
+        id="montant"
+        [(ngModel)]="montantVirement"
+        name="unMontant"
+        required
+        class="example-left-align"
+        placeholder="le montant"
+      />
+    </mat-form-field>
+  <button (click)="getLastOperation()" mat-raised-button color="primary">
+    valider
+  </button>
+</div>-->

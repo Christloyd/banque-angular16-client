@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { VirementComponent } from './pages/virement/virement.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { VirementComponent } from './pages/virement/virement.component';
     MatCardModule,
     MatSelectModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
+
   ],
   providers: [
     {

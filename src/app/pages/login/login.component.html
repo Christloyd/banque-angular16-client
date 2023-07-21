@@ -1,29 +1,58 @@
-<div class="container">
-  <h1 style="text-align: center">Connexion</h1>
-  <mat-form-field>
-    <input
-      matInput
-      type="text"
-      id="unLogin"
-      [(ngModel)]="login.unLogin"
-      name="unLogin"
-      required
-      class="example-left-align"
-      placeholder="Identifant"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      id="unMdp"
-      [(ngModel)]="login.unMdp"
-      name="unMdp"
-      required
-      class="example-left-align"
-      placeholder="Mot de passe"
-    />
-  </mat-form-field>
-  <button (click)="getlogin()" mat-raised-button color="primary">
-    Se connecter
-  </button>
-</div>
+
+  <br>
+  <br>
+  <br>
+
+
+  <div class="container">
+    <div class="d-flex justify-content-center pt-3">
+      <h1>Heureux de vous revoir ! </h1>
+  </div>
+      <div class="row mt-3 g-0 mb-5 height-120">
+          <div class="col-md-6">
+              <div class="h-100 shadow">
+                  <img style="height: 100%" src="assets/phone.webp"/>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="bg-white p-4 h-100 shadow">
+                  <div formGroupName="client" class="p-3 d-flex justify-content-center flex-column"> 
+                    <span class="registerTop text-center"><h2>Connexion</h2></span>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                              <div class="form-outline flex-fill mb-0">
+                                  <input type="text"
+                                  class="form-control mt-2"
+                                  id="unLogin"
+                                  [(ngModel)]="login.unLogin"
+                                  name="unLogin"
+                                  required
+                                  placeholder="Veuillez entrer votre identifant"
+                                  required>
+                              </div>
+                          </div>
+                      
+                      <div class="d-flex flex-row align-items-center mb-4">
+                              <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                              <div class="form-outline flex-fill mb-0">
+                                  <input 
+                                  id="unMdp"
+                                  [(ngModel)]="login.unMdp"
+                                  name="unMdp"
+                                  type="password" 
+                                  name="password" 
+                                  class="form-control mt-2" 
+                                  autocomplete="current-password" 
+                                  placeholder="Veuillez entrer votre mot de passe" 
+                                  required>
+                              </div>
+                          </div>
+                      
+
+</div>                 
+
+<div class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4">
+  <button class="btn btn-outline-primary btn-block" type="submit" (click)="getlogin()">Se connecter</button>
+                          </div>
+
+                          
