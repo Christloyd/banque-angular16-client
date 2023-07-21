@@ -13,46 +13,54 @@ import { FormControl } from '@angular/forms';
 export class VirementComponent {
   selectedCompteControl = new FormControl();
   listeCompte?: ListeCompte[];
-  currentCompte : ListeCompte = {
+  currentCompte: ListeCompte = {
     libelle: '',
     solde: 0,
     decouvert: 0,
-    taux : 0
+    taux: 0
   };
 
   currentIndex = -1;
   libelle = '';
 
-  compteSource! : number;
-  compteDest! : number;
-  montantVirement! : number ;
-  virement : Virement[] = [];
+  compteSource!: number;
+  compteDest!: number;
+  montantVirement!: number;
+  virement: Virement[] = [];
 
-  constructor (private banqueService : BanqueService, private sharedService : SharedService) {}
+  constructor(private banqueService: BanqueService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.sharedService.refreshList$.subscribe(() => {
-      this.lesComptes(); // Appelle la fonction lesComptes() lorsque l'événement connect de login.component.ts grace à la fonction refreshList() de shared.service
-    });
+    this.lesComptes();
   }
 
+
   lesComptes(): void {
-    this.banqueService.getComptes(this.sharedService.response).subscribe({
+
+    let idString = sessionStorage.getItem('id');
+    let idNumber: number = -1; // Initialisation avec une valeur par défaut
+
+    if (idString !== null) {
+      idNumber = parseInt(idString);
+    }
+
+    this.banqueService.getComptes(idNumber).subscribe({
       next: (data) => {
+        console.log(idNumber);
         this.listeCompte = data;
         console.log(data);
       },
-    error: (e) => console.error(e)
+      error: (e) => console.error(e)
     });
   }
 
-  refreshList() : void {
+  refreshList(): void {
     this.lesComptes();
     this.currentCompte = {
       libelle: '',
       solde: 0,
       decouvert: 0,
-      taux : 0
+      taux: 0
     };
     this.currentIndex = -1;
   }
@@ -66,15 +74,23 @@ export class VirementComponent {
 
   getLastOperation(): void {
 
+    let idString = sessionStorage.getItem('id');
+    let idNumber: number = -1; // Initialisation avec une valeur par défaut
+
+    if (idString !== null) {
+      idNumber = parseInt(idString);
+    }
+
     const data = {
-      unUtilisateurId: sessionStorage.getItem('id'),
+
+      unUtilisateurId: idNumber,
       unCompteIdSrc: this.compteSource,
       unCompteIdDst: this.compteDest,
       unMontant: this.montantVirement,
     }
 
     this.banqueService.getVirement(data).subscribe({
-      next : (res) => {
+      next: (res) => {
         console.log(res);
       },
       error: (e) => console.error(e)

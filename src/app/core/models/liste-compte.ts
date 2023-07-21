@@ -1,7 +1,8 @@
 export class ListeCompte {
 
-    libelle! : string;
-    solde! : number;
-    decouvert? : number;
-    taux? : number;
+    id?: number;
+    libelle!: string;
+    solde!: number;
+    decouvert?: number;
+    taux?: number;
 }

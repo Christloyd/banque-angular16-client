@@ -2,9 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
+ajouter :
 
-ajouter : 
-
+npm install -g @angular/cli
 npm install //node modules et package-lock.json
 ng add @angular/material // pour angular material
 npm install @angular/localize // pour l'heure en francais

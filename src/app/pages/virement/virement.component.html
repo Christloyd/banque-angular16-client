@@ -3,26 +3,19 @@
 
 
     <mat-form-field>
-      <mat-label>Select</mat-label>
-      <mat-select [formControl]="selectedCompteControl">
-        <mat-option *ngFor="let compte of listeCompte" [value]="compte.libelle">{{ compte.libelle }}</mat-option>
+      <mat-label>Selectionner le compte</mat-label>
+      <mat-select [(ngModel)]="compteSource">
+        <mat-option *ngFor="let compte of listeCompte" [value]="compte.id">{{ compte.libelle }}</mat-option>
       </mat-select>
     </mat-form-field>
 
-
-   
-
     <mat-form-field>
-        <input
-          matInput
-          id="id compte destinataire"
-          [(ngModel)]="compteDest"
-          name="unCompteIdDst"
-          required
-          class="example-left-align"
-          placeholder="id compte destinataire"
-        />
-      </mat-form-field>
+      <mat-label>Selectionner le compte</mat-label>
+      <mat-select [(ngModel)]="compteDest">
+        <mat-option *ngFor="let compte of listeCompte" [value]="compte.id">{{ compte.libelle }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+   
       <mat-form-field>
         <input
           matInput
