@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Login } from '../models/login';
 import { ListeCompte } from '../models/liste-compte';
 import { Virement } from '../models/virement';
+import { Detail } from '../models/detail';
 
 const baseUrl = 'http://localhost:8080/api/service-banque'
 
@@ -39,6 +40,14 @@ export class BanqueService {
       unCompteId: unCompteId 
     }; 
     return this.http.post(`${baseUrl}/virement` , data);
+  }
+
+  getDetailCompte(unUtilisateurId: number, unCompteId : number, dateDeb: string, dateFin : string, creditDebit : boolean) : Observable<Detail>{
+    return this.http.post<Detail>(`${baseUrl}/selectOperation?unUtilisateurId=${unUtilisateurId}&unCompteId=${unCompteId}&dateDeb=${dateDeb}&dateFin=${dateFin}&creditDebit=${creditDebit}`, null);
+  }
+
+  getAllDetailCompte(unUtilisateurId: number, unCompteId : number) : Observable<Detail>{
+    return this.http.post<Detail>(`${baseUrl}/selectAllOperation?unUtilisateurId=${unUtilisateurId}&unCompteId=${unCompteId}`, null);
   }
 
   dataSave(){

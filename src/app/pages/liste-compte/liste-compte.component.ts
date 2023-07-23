@@ -92,7 +92,7 @@ export class ListeCompteComponent {
       next: (data) => {
         this.listeCompte = data;
         console.log(data);
-        this.id = this.sharedService.response
+        this.id = sessionStorage.getItem('id')
       },
       error: (e) => console.error(e)
     });

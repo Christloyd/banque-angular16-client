@@ -35,16 +35,10 @@ export class LoginComponent {
     
     this.banqueService.connect(data).subscribe({
       next: (res) => {
-        this.sharedService.response = res; // Stock la réponse res dans le service partagé
-        console.log(res);
-        this.id = res ;
-        this.sharedService.refreshList(); // Appelle la fonction refreshList() du service partagé
-        this.banqueService.id = res;
-
-        sessionStorage.setItem('id', this.id );
+        this.router.navigate([`liste-compte/${res}`]);
+        sessionStorage.setItem('id', res );
       },
       error: (e) => console.error(e)
     });
-    this.router.navigate([`liste-compte/${sessionStorage.getItem('id')}`]);
   }
 }

@@ -28,7 +28,7 @@ export class VirementComponent {
   montantVirement!: number;
   virement: Virement[] = [];
 
-  constructor(private banqueService: BanqueService, private sharedService: SharedService) { }
+  constructor(private banqueService: BanqueService) { }
 
   ngOnInit(): void {
     this.lesComptes();
