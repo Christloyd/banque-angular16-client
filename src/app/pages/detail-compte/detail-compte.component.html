@@ -13,22 +13,41 @@
 <mat-form-field>
     <mat-label>Saisissez une plage de dates</mat-label>
     <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
-      <input matEndDate placeholder="End date" [(ngModel)]="endDate">
+      <input matStartDate placeholder="Start date" (change)="startDateFunc()">
+      <input matEndDate placeholder="End date" (change)="endDateFunc()">
     </mat-date-range-input>
-    <mat-hint>{{startDate | date: 'dd/MM/yyyy'}} – {{endDate | date: 'dd/MM/yyyy'}}</mat-hint>
+    <mat-hint>{{startDate}} – {{endDate}}</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
 </mat-form-field>
 </div>
 
 <div class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4">
-<input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange()"> 
-<label>{{isChecked ? 'Coché' : 'Non coché'}}</label>
+<input type="checkbox" (change)="onDebit()"> 
+<label> Debit </label>
 </div>
 <div class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4">
-  <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange()"> 
-  <label>{{isChecked ? 'Coché' : 'Non coché'}}</label>
+  <input type="checkbox" (change)="onCredit()"> 
+  <label> Credit</label>
   </div>
+
+  <button (click)="actualiserRecherche()"> Check </button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Libellé</th>
+        <th scope="col">Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let details of detail">
+        <td>{{details.date}}</td>
+        <td>{{details.libelle}}</td>
+        <td>{{details.montant}}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>

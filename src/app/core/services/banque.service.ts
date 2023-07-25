@@ -42,12 +42,12 @@ export class BanqueService {
     return this.http.post(`${baseUrl}/virement` , data);
   }
 
-  getDetailCompte(unUtilisateurId: number, unCompteId : number, dateDeb: string, dateFin : string, creditDebit : boolean) : Observable<Detail>{
-    return this.http.post<Detail>(`${baseUrl}/selectOperation?unUtilisateurId=${unUtilisateurId}&unCompteId=${unCompteId}&dateDeb=${dateDeb}&dateFin=${dateFin}&creditDebit=${creditDebit}`, null);
+  getDetailCompte(unUtilisateurId: number, unCompteId : number, dateDeb: any, dateFin : any, creditDebit : boolean) : Observable<Detail[]>{
+    return this.http.post<Detail[]>(`${baseUrl}/selectOperation?unUtilisateurId=${unUtilisateurId}&unCompteId=${unCompteId}&dateDeb=${dateDeb}&dateFin=${dateFin}&creditDebit=${creditDebit}`, null);
   }
 
-  getAllDetailCompte(unUtilisateurId: number, unCompteId : number) : Observable<Detail>{
-    return this.http.post<Detail>(`${baseUrl}/selectAllOperation?unUtilisateurId=${unUtilisateurId}&unCompteId=${unCompteId}`, null);
+  getAllDetailCompte(unUtilisateurId: number, unCompteId : number) : Observable<Detail[]>{
+    return this.http.post<Detail[]>(`${baseUrl}/selectAllOperation?unUtilisateurId=${unUtilisateurId}&unCompteId=${unCompteId}`, null);
   }
 
   dataSave(){

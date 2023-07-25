@@ -1,14 +1,3 @@
-<br>
-<br>
-<br>
-<br>
-
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-<button 
-  class="btn btn-outline-info me-md-2"
-  type="button"
-  (click)="goVirement()">Virement</button></div>
-
   <br>
   <br>
   <br>
@@ -37,38 +26,6 @@
   </div>
 
 
-<!--<div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by libelle"
-          [(ngModel)]="libelle"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchLabelle()"
-          >
-            Search
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h4>Liste Bancaire</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let compte of listeCompte; let i = index"
-          (click)="goOperation(compte.id)">
-          {{ compte.libelle }}
-        </li>
-      </ul>
-    </div>
-  </div>-->
 
   <br>
   <br>
@@ -95,10 +52,12 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+<button 
+  class="btn btn-info me-md-2"
+  type="button"
+  (click)="goVirement()">Faire un virement</button></div>
 
 
 
