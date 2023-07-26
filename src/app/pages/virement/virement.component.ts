@@ -4,6 +4,7 @@ import { Virement } from 'src/app/core/models/virement';
 import { BanqueService } from 'src/app/core/services/banque.service';
 import { SharedService } from 'src/app/core/services/shared.service';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-virement',
@@ -28,7 +29,7 @@ export class VirementComponent {
   montantVirement!: number;
   virement: Virement[] = [];
 
-  constructor(private banqueService: BanqueService) { }
+  constructor(private banqueService: BanqueService, private router : Router) { }
 
   ngOnInit(): void {
     this.lesComptes();
@@ -88,7 +89,8 @@ export class VirementComponent {
 
     this.banqueService.getVirement(data).subscribe({
       next: (res) => {
-        console.log(res);
+        alert('Votre virement a bien été effectuée');
+        this.router.navigate([`liste-compte/${res}`]);
       },
       error: (e) => console.error(e)
     })
