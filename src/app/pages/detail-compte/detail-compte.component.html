@@ -13,10 +13,9 @@
 <mat-form-field>
     <mat-label>Saisissez une plage de dates</mat-label>
     <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" (change)="startDateFunc()">
-      <input matEndDate placeholder="End date" (change)="endDateFunc()">
+      <input matStartDate placeholder="Start date" [(ngModel)]="startDate" (change)="startDateFunc()">
+      <input matEndDate placeholder="End date"  [(ngModel)]="endDate" (change)="endDateFunc()">
     </mat-date-range-input>
-    <mat-hint>{{startDate}} – {{endDate}}</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
 </mat-form-field>

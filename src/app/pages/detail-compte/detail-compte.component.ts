@@ -38,11 +38,11 @@ export class DetailCompteComponent {
   }
 
   startDateFunc(){
-    this.startDate =  this.startDate.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    return this.startDate.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
   }
 
   endDateFunc(){
-    this.startDate =  this.endDate.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    return this.endDate.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
   }
 
   ngOnInit(): void {
@@ -92,14 +92,14 @@ export class DetailCompteComponent {
       }
 
 
-      if(this.isCredit && this.isDebit)
+      if((this.isCredit === true && this.isDebit === true) || (this.isCredit === false && this.isDebit === false) )
       {
         this.detailCompte()
         this.subscription.unsubscribe();
       }
       else if( this.isDebit === true && this.isCredit === false){
 
-        this.banqueService.getDetailCompte(idNumber,this.url,this.startDate,this.endDate,true).subscribe({
+        this.banqueService.getDetailCompte(idNumber,this.url,this.startDateFunc(),this.endDateFunc(),true).subscribe({
           next: (data) => {
             this.detail = data;
           console.log(data);
@@ -109,7 +109,7 @@ export class DetailCompteComponent {
         });
       }
       else if( this.isDebit === false && this.isCredit === true){
-        this.banqueService.getDetailCompte(idNumber,this.url,this.startDate,this.endDate,false).subscribe({
+        this.banqueService.getDetailCompte(idNumber,this.url,this.startDateFunc(),this.endDateFunc(),false).subscribe({
           next: (data) => {
             this.detail = data;
           console.log(data);
