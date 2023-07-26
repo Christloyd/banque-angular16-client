@@ -24,7 +24,7 @@ export class DetailCompteComponent {
   private subscription!: Subscription;
 
 
-  constructor(private banqueService: BanqueService,  private router: Router,private route: ActivatedRoute, private sharedService : SharedService) { }
+  constructor(private banqueService: BanqueService,  private router: Router,private route: ActivatedRoute, private sharedService : SharedService, ) { }
 
 
   onDebit() {
@@ -63,6 +63,7 @@ export class DetailCompteComponent {
     this.subscription = this.sharedService.refreshList$.subscribe(() => {
       this.actualiserRecherche();
     });
+
   }
 
   detailCompte(): void {

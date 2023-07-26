@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from 'src/app/core/models/login';
+import { AuthServiceService } from 'src/app/core/services/auth-service.service';
 import { BanqueService } from 'src/app/core/services/banque.service';
 import { SharedService } from 'src/app/core/services/shared.service';
 
@@ -25,6 +26,7 @@ export class LoginComponent {
       console.log(id); // Vérifiez si vous obtenez la valeur de `id` correctement
     });
   }
+
 
   public id : any; 
   getlogin(): void {

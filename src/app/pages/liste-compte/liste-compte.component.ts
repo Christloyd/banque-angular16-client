@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ListeCompte } from 'src/app/core/models/liste-compte';
 import { BanqueService } from 'src/app/core/services/banque.service';
 import { SharedService } from 'src/app/core/services/shared.service';
+import { Subscription } from 'rxjs';
+import { AuthServiceService } from 'src/app/core/services/auth-service.service';
 
 
 @Component({
@@ -11,6 +13,8 @@ import { SharedService } from 'src/app/core/services/shared.service';
   styleUrls: ['./liste-compte.component.css']
 })
 export class ListeCompteComponent {
+
+  private subscription!: Subscription;
 
   listeCompte?: ListeCompte[];
   currentCompte : ListeCompte = {
@@ -27,10 +31,15 @@ export class ListeCompteComponent {
 
   idUrl : any;
 
-  constructor(private banqueService: BanqueService, private sharedService : SharedService,  private router: Router) { }
+  constructor(private banqueService: BanqueService, private sharedService : SharedService,  private router: Router, private authService : AuthServiceService) { }
 
   ngOnInit(): void {
       this.lesComptes();
+
+      this.subscription = this.sharedService.refreshList$.subscribe(() => {
+        this;
+      });
+
   }
 
 
