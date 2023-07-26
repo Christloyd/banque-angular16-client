@@ -31,14 +31,17 @@
   <label> Credit</label>
   </div>
 
-  <button (click)="actualiserRecherche()"> Check </button>
+  <div class="col d-flex justify-content-end">
+  <button type="button" class="btn btn-primary me-md-2" style="width: 10rem;" (click)="actualiserRecherche()"> Check </button>
+</div>
+
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Libellé</th>
-        <th scope="col">Montant</th>
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Libellé</th>
+        <th scope="col" style="text-align: center;">Montant</th>
       </tr>
     </thead>
     <tbody>
